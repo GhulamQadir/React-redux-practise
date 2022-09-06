@@ -1,6 +1,7 @@
 import { Link, withRouter } from "react-router-dom"
 import { connect } from 'react-redux'
 import '../App.css'
+import { greet } from "../store/actions"
 
 function Home(props) {
     console.log("reduxData=>>", props)
@@ -13,6 +14,7 @@ function Home(props) {
             <h4>Email: {props.email}</h4>
             <Link to="/about">Go to about</Link>
             <br />
+            <button onClick={props.greetUser}>Click me !</button>
             <br />
             <br />
             <div>{
@@ -35,6 +37,8 @@ function Home(props) {
 
 
 // FOR Multiple Reducers
+
+// for getting data from state
 const mapStateToProps = (state) => ({
     userName: state.auth.name,
     email: state.auth.email,
@@ -43,4 +47,17 @@ const mapStateToProps = (state) => ({
 })
 
 
-export default connect(mapStateToProps, null)(withRouter(Home));
+
+// for updating state's property
+const mapDispatchToProps = (dispatch) => ({
+    userName: "GQ Sakaria",
+
+    greetUser: () => dispatch(greet("Ghulam Qadir"))        // for adding this function into state
+
+    // dispatch(greetUser(""))                // dispatching this function to connect it with redux
+})
+
+
+// export default connect(mapStateToProps, null)(withRouter(Home));
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Home));
