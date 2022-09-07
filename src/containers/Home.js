@@ -4,7 +4,8 @@ import '../App.css'
 import { greet } from "../store/actions"
 
 function Home(props) {
-    console.log("reduxData=>>", props)
+    console.log("reduxData=>>", props
+    )
     return (
         <div>
             <h1>Home Page</h1>
@@ -43,7 +44,8 @@ const mapStateToProps = (state) => ({
     userName: state.auth.name,
     email: state.auth.email,
     cartData: state.cart.cartProducts,
-    totalAmount: state.cart.totalAmount
+    totalAmount: state.cart.totalAmount,
+    afterDiscount: state.cart.afterDiscount
 })
 
 
