@@ -9,6 +9,14 @@ const initialState = {
 
 
 
-export default (state = initialState) => {
+export default (state = initialState, action) => {
+    console.log("cart action=>>", action)
+    switch (action.type) {
+        case "setData":
+            return ({
+                ...state,
+                totalAmount: `After 20% discount: ${state.totalAmount - (state.totalAmount * 20 / 100)}`
+            })
+    }
     return state;
 }

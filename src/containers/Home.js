@@ -14,7 +14,7 @@ function Home(props) {
             <h4>Email: {props.email}</h4>
             <Link to="/about">Go to about</Link>
             <br />
-            <button onClick={props.greetUser}>Click me !</button>
+            <button onClick={() => props.greet(props.userName)}>Click me !</button>
             <br />
             <br />
             <div>{
@@ -50,9 +50,9 @@ const mapStateToProps = (state) => ({
 
 // for updating state's property
 const mapDispatchToProps = (dispatch) => ({
-    userName: "GQ Sakaria",
+    userName: "Ghulam Qadir Sakaria",      // updating name
 
-    greetUser: () => dispatch(greet("Ghulam Qadir"))        // for adding this function into state
+    greet: (name) => dispatch(greet(name))        // for adding this function into state
 
     // dispatch(greetUser(""))                // dispatching this function to connect it with redux
 })
