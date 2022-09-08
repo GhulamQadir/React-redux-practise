@@ -1,11 +1,12 @@
 import { Link, withRouter } from "react-router-dom"
 import { connect } from 'react-redux'
 import '../App.css'
-import { greet } from "../store/actions"
+import { addUser, greet } from "../store/actions"
 
 function Home(props) {
-    console.log("reduxData=>>", props
-    )
+    console.log("reduxData=>>", props)
+
+    let user = { name: "Sameer", email: "sameer@gmail.com" }
     return (
         <div>
             <h1>Home Page</h1>
@@ -18,6 +19,7 @@ function Home(props) {
             <button onClick={() => props.greet(props.userName)}>Click me !</button>
             <br />
             <br />
+            <button onClick={() => props.addNewUser(user)}>Add User</button>
             <div>{
                 props.cartData.map((value, index) => {
                     return <div className="cartData" key={index}>
@@ -45,18 +47,16 @@ const mapStateToProps = (state) => ({
     email: state.auth.email,
     cartData: state.cart.cartProducts,
     totalAmount: state.cart.totalAmount,
-    afterDiscount: state.cart.afterDiscount
+    afterDiscount: state.cart.afterDiscount,
+    users: state.auth.users
 })
 
 
 
-// for updating state's property
+// (functions hpty hain jo actions ma bnaty hain)
 const mapDispatchToProps = (dispatch) => ({
-    userName: "Ghulam Qadir Sakaria",      // updating name
-
-    greet: (name) => dispatch(greet(name))        // for adding this function into state
-
-    // dispatch(greetUser(""))                // dispatching this function to connect it with redux
+    greet: (name) => dispatch(greet(name)),       // for adding this function into state
+    addNewUser: (user) => dispatch(addUser(user))
 })
 
 

@@ -8,4 +8,12 @@ const greet = (name) => {
     }
 }
 
-export { greet }
+
+const addUser = (data) => {
+    return (dispatch) => {
+        dispatch({ type: "addUser", data: data })
+    }
+}
+
+
+export { greet, addUser }
