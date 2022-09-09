@@ -10,7 +10,11 @@ const initialState = {
     {
         name: "Abc",
         email: "abc@gmail.com"
-    }]
+    }],
+
+    inputVal: "",
+
+    saveInputVal: ""
 }
 
 
@@ -30,6 +34,19 @@ export default (state = initialState, action) => {
                 ...state,
                 users: [...state.users, action.data]
             })
+
+        case "saveValue":
+            return ({
+                ...state,
+                inputVal: action.data
+            })
+        case "storeValue":
+            return ({
+                ...state,
+                saveInputVal: action.data
+            })
     }
     return state;
 }
+
+// storeValue

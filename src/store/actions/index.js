@@ -16,4 +16,18 @@ const addUser = (data) => {
 }
 
 
-export { greet, addUser }
+const saveInputVal = (value) => {
+    return (dispatch) => {
+        dispatch({ type: "saveValue", data: value })
+    }
+}
+
+
+const storeInputVal = (value) => {
+    return (dispatch) => {
+        dispatch({ type: "storeValue", data: value })
+    }
+}
+
+
+export { greet, addUser, saveInputVal, storeInputVal }
